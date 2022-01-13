@@ -15,7 +15,7 @@ spec-sections:
 
 ## Simple Summary
 <!--"If you can't explain it simply, you don't understand it well enough." Provide a simplified and layman-accessible explanation of the FIP.-->
-Data service first - The real owner of a miner should be the one providing the sector data service not the one just own the owner key.
+Data service first - The real owner of a miner should be the one providing the sector data service not the one just own the owner key. Miners can still could get their rewards and all the collateral as long as the data could still provide service even through the owner key lost
 
 ## Abstract
 <!--A short (~200 word) description of the technical issue being addressed.-->
@@ -129,6 +129,13 @@ N/A
 For this implementation a miner with the owner key lost requires a new key to submit a change owner key proposal and we use random PoSt challenge to verify the new key before it could make the owner key proposal. 
 
 ONLY the miner own the real sector data could generate and submit a valid PoSt proof for the random challenge, If the number of partitions or deadlines challenged are enough(Challenge over 50% of its power ?) and the whole operation is very safe and also means the data owner owns everything like collateral and rewards not just the owner key control everything.
+
+
+#### Qeustions: 
+
+1. FOR the CC sectors regeneration problems, we could add a random piece or mix some random bytes in the PC1 ticket that ONLY store in the local leveldb to make sure only the owner could regenerate the its CC sectors and the owner key change proposal only challenge the new sectors with random piece info or ticket with random bytes mixed.
+2. AS for the local random piece or random bytes we could backup the metadata frequently, this may brings some extra works but as least there are things we could do rather than just losing everything while the owner key was stolen.
+
 
 ## Incentive Considerations
 <!--All FIPs must contain a section that discusses the incentive implications/considerations relative to the proposed change. Include information that might be important for incentive discussion. A discussion on how the proposed change will incentivize reliable and useful storage is required. FIP submissions missing the "Incentive Considerations" section will be rejected. An FIP cannot proceed to status "Final" without a Incentive Considerations discussion deemed sufficient by the reviewers.-->
